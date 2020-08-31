@@ -1,0 +1,8 @@
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\bin\Debug\FlatPlaning.dll
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\bin\Debug\FlatPlaning.pdb
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.Properties.Resources.resources
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.GenerateResource.cache
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.CoreCompileInputs.cache
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.dll
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.pdb
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csprojAssemblyReference.cache

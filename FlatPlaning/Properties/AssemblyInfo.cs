@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("FlatPlaning")]
 [assembly: AssemblyDescription("Revit Add-In Description for FlatPlaning")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Autodesk Inc.")]
+[assembly: AssemblyCompany("BIMpel")]
 [assembly: AssemblyProduct("FlatPlaning Revit C# .NET Add-In")]
-[assembly: AssemblyCopyright("Copyright 2019 (C) Jeremy Tammik, Autodesk Inc.")]
+[assembly: AssemblyCopyright("BIMpel")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2020.0.0.0")]
-[assembly: AssemblyFileVersion("2020.0.0.0")]
+[assembly: AssemblyVersion("2020.1.0.1")]
+[assembly: AssemblyFileVersion("2020.1.0.1")]
