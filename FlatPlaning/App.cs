@@ -24,67 +24,69 @@ namespace FlatPlaning
         {
             UIControlledApplication app = application;
             Util.GetLocalisationValues(app);
-            string NameOfApp = "FlatPlaning.";
-            string NameOfAppResources = "FlatPlaning.Resources.";
+            string NameOfApp = "FlatPlaning";
             { // Лента
-                string thisAssembyPath = Assembly.GetExecutingAssembly().Location;
-                string panelName = "FlatPlaning";//Util.GetLanguageResources.GetString("groupTitle_ribbonPanel", Util.Cult);
-                Autodesk.Revit.UI.RibbonPanel ribbonPanel = application.CreateRibbonPanel(panelName);
-                ribbonPanel.Enabled = true;
-                ribbonPanel.Visible = true;
-
-                { // Выпадающее меню
-                    string groupTitle = "Group1";// Util.GetLanguageResources.GetString("groupTitle_ribbonPanel", Util.Cult);
-                    PulldownButtonData group1Data = new PulldownButtonData("PulldownGroup", groupTitle);
-                    PulldownButton group1 = ribbonPanel.AddItem(group1Data) as PulldownButton;
-                    group1.Image = GetEmbeddedImage(NameOfAppResources + "Group1.ico");
-                    group1.LargeImage = GetEmbeddedImage(NameOfAppResources + "Group1.ico");
-
-
-                    {
-                        string classWallName = NameOfApp + "According";
-                        string wallTitle = "According";//Util.GetLanguageResources.GetString("wallTitle_ribbonPanel", Util.Cult);
-                        PushButtonData buttonWallData = new PushButtonData("Name1", wallTitle, thisAssembyPath, classWallName);
-                        PushButton pushWallButton = group1.AddPushButton(buttonWallData) as PushButton;
-                        pushWallButton.Image = GetEmbeddedImage(NameOfAppResources + "According.ico");
-                        pushWallButton.LargeImage = GetEmbeddedImage(NameOfAppResources + "According.ico");
-                    }
-
-                    {
-                        string classFroolName = NameOfApp + "Filling";
-                        string floorTitle = "Filling";//Util.GetLanguageResources.GetString("floorTitle_ribbonPanel", Util.Cult);
-                        PushButtonData buttonFloorData = new PushButtonData("Name2", floorTitle, thisAssembyPath, classFroolName);
-                        PushButton pushFloorButton = group1.AddPushButton(buttonFloorData) as PushButton;
-                        string ImageFilling = NameOfAppResources + "Filling.ico";
-                        pushFloorButton.Image = GetEmbeddedImage(NameOfAppResources + "Filling.ico");
-                        pushFloorButton.LargeImage = GetEmbeddedImage(NameOfAppResources + "Filling.ico");
-
-                    }
-                    group1.AddSeparator();
-                    {
-                        string classAbout = NameOfApp + "About";
-                        string aboutTitle = "About";//Util.GetLanguageResources.GetString("aboutTitle_ribbonPanel", Util.Cult);
-                        PushButtonData buttonAboutData = new PushButtonData("Name3", aboutTitle, thisAssembyPath, classAbout);
-                        PushButton pushAboutButton = group1.AddPushButton(buttonAboutData) as PushButton;
-                        pushAboutButton.Image = GetEmbeddedImage(NameOfAppResources + "iconParameters16.png");
-                        pushAboutButton.LargeImage = GetEmbeddedImage(NameOfAppResources + "iconParameters32.png");
-                    }
-                }
-                return Result.Succeeded;
+                RibbonInitialize panel = new RibbonInitialize(app, NameOfApp);
+                // Выпадающее меню
+                string nameButtonPull = "FlatPlaning";
+                PulldownButton group1 = panel.pullDownButton(NameOfApp, nameButtonPull);
+                // Комманда Соответсвия параметров
+                string nameButtonAccording = "According";
+                PushButton buttonAccording = panel.pushButton(NameOfApp, group1, nameButtonAccording);
+                // Комманда Заполнения параметров
+                string nameButtonFilling = "Filling";
+                PushButton buttonFilling = panel.pushButton(NameOfApp, group1, nameButtonFilling);
+                //---------
+                group1.AddSeparator();
+                // Комманда About
+                string nameButtonAbout = "About";
+                PushButton buttonAbout = panel.pushButton(NameOfApp, group1, nameButtonAbout);        
             }
+            return Result.Succeeded;
         }
-
-        // Комманда Соответсвия параметров
-        // Комманда Заполнения параметров
-        // Комманда About
-
         public Result OnShutdown(UIControlledApplication a)
         {
             return Result.Succeeded;
         }
+    }
+    internal class RibbonInitialize
+    {
+        int CountNameButton = 0;
+        Autodesk.Revit.UI.RibbonPanel ribbonPanel;
+        string thisAssembyPath;
+        internal RibbonInitialize(UIControlledApplication app, string panelName)
+        {
 
+            thisAssembyPath = Assembly.GetExecutingAssembly().Location;
+            // Инициализация панели
+            ribbonPanel = app.CreateRibbonPanel(panelName);
+            ribbonPanel.Enabled = true;
+            ribbonPanel.Visible = true;
+        }
+        internal PulldownButton pullDownButton(string nameOfApp, string titleButton)
+        {
+            CountNameButton++;
+            string groupName = "Group" + CountNameButton;
+            PulldownButtonData groupData = new PulldownButtonData(groupName, titleButton);
+            PulldownButton group = ribbonPanel.AddItem(groupData) as PulldownButton;
+            string imageName = nameOfApp + "." + "Resources" + "." + titleButton +groupName+".ico";
+            group.Image = GetEmbeddedImage(imageName);
+            group.LargeImage = GetEmbeddedImage(imageName);
+            return group;
 
-
+        }
+        internal PushButton pushButton(string nameOfApp, PulldownButton pull, string titleButton)
+        {
+            CountNameButton++;
+            string className = nameOfApp + "." + titleButton;
+            string NameButton = "Name" + CountNameButton.ToString();
+            PushButtonData buttonData = new PushButtonData(NameButton, titleButton, this.thisAssembyPath, className);
+            PushButton pushButton = pull.AddPushButton(buttonData) as PushButton;
+            string imageName = nameOfApp + "." + "Resources" + "." +titleButton + ".ico";
+            pushButton.Image = GetEmbeddedImage(imageName);
+            pushButton.LargeImage = GetEmbeddedImage(imageName);
+            return pushButton;
+        }
         static ImageSource GetEmbeddedImage(string name)// Получение иконок из сборки
         {
             try
@@ -98,23 +100,7 @@ namespace FlatPlaning
                 return null;
             }
         }
-    }
-    class ButtonCommand
-    {
-        int CountNameButton = 0;
-        internal void ButtonCommand(String NameButton, PulldownButton NamePull,string thisAssembyPath)
-        {
-            CountNameButton++;
-            string classWallName = NameOfApp + "According";
-            string wallTitle = "According";//Util.GetLanguageResources.GetString("wallTitle_ribbonPanel", Util.Cult);
 
-            PushButtonData buttonWallData = new PushButtonData("Name1", wallTitle, thisAssembyPath, classWallName);
-            PushButton pushWallButton = NamePull.AddPushButton(buttonWallData) as PushButton;
-            pushWallButton.Image = GetEmbeddedImage(NameOfAppResources + "According.ico");
-            pushWallButton.LargeImage = GetEmbeddedImage(NameOfAppResources + "According.ico");
-
-        }
-        
 
     }
 

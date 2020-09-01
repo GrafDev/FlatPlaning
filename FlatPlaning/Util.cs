@@ -71,4 +71,23 @@ namespace FlatPlaning
             }
         }
     }
+    public class ErrorMessageException : ApplicationException
+    {
+        /// <summary>
+        /// constructor entirely using baseclass'
+        /// </summary>
+        public ErrorMessageException()
+            : base()
+        {
+        }
+
+        /// <summary>
+        /// constructor entirely using baseclass'
+        /// </summary>
+        /// <param name="message">error message</param>
+        public ErrorMessageException(String message)
+            : base(message)
+        {
+        }
+    }
 }

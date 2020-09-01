@@ -10,6 +10,8 @@ using Autodesk.Revit.DB.Architecture;
 using System.Globalization;
 using System.Diagnostics;
 using Autodesk.Revit.ApplicationServices;
+using System.Resources;
+using FlatPlaning;
 #endregion
 
 namespace FlatPlaning
@@ -19,7 +21,7 @@ namespace FlatPlaning
     {
         public Result Execute(
           ExternalCommandData commandData,
-          ref string message,
+          ref string messageErr,
           ElementSet elements)
         {
             UIApplication uiapp = commandData.Application;
@@ -27,34 +29,54 @@ namespace FlatPlaning
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
 
-            // Access current selection
-
-            Selection sel = uidoc.Selection;
-
-            // Retrieve elements from database
-
-            FilteredElementCollector col
-              = new FilteredElementCollector(doc)
-                .WhereElementIsNotElementType()
-                .OfCategory(BuiltInCategory.INVALID)
-                .OfClass(typeof(Wall));
-
-            // Filtered element collector is iterable
-
-            foreach (Element e in col)
-            {
-                Debug.Print(e.Name);
-            }
-
-            // Modify document within a transaction
-
             using (Transaction tx = new Transaction(doc))
             {
-                tx.Start("Transaction Name");
-                tx.Commit();
+                try
+                {
+                    Document document = doc;
+                    //FloorsSetup floorsFinishesSetup = new FloorsSetup();
+                    //Load the selection form
+
+                    AboutWindowBox aboutWindow = new AboutWindowBox();
+
+                    aboutWindow.InitializeComponent();
+
+                    return Result.Succeeded;
+                }
+
+                catch (Autodesk.Revit.Exceptions.OperationCanceledException exceptionCanceled)
+                {
+                    messageErr = exceptionCanceled.Message;
+                    if (tx.HasStarted())
+                    {
+                        tx.RollBack();
+                    }
+                    return Autodesk.Revit.UI.Result.Cancelled;
+                }
+                catch (ErrorMessageException errorEx)
+                {
+                    // checked exception need to show in error messagebox
+                    messageErr = errorEx.Message;
+                    if (tx.HasStarted())
+                    {
+                        tx.RollBack();
+                    }
+                    return Autodesk.Revit.UI.Result.Failed;
+                }
+                catch (Exception ex)
+                {
+                    // unchecked exception cause command failed
+                    messageErr = Util.GetLanguageResources.GetString("floor_unexpectedError", Util.Cult) + ex.Message;
+                    //Trace.WriteLine(ex.ToString());
+                    if (tx.HasStarted())
+                    {
+                        tx.RollBack();
+                    }
+                    return Autodesk.Revit.UI.Result.Failed;
+                }
+
             }
 
-            return Result.Succeeded;
         }
     }
 }

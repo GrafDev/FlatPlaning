@@ -5,4 +5,8 @@ C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.c
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.CoreCompileInputs.cache
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.dll
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.pdb
-C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csprojAssemblyReference.cache
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutWondowBox.g.cs
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.cache
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.lref
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutWondowBox.baml
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.g.resources

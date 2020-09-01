@@ -88,6 +88,9 @@
     <Compile Include="App.cs" />
     <Compile Include="According.cs" />
     <Compile Include="About.cs" />
+    <Compile Include="AboutWondowBox.xaml.cs">
+      <DependentUpon>AboutWondowBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Util.cs" />
     <Compile Include="Filling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,12 +102,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FlatPlaning.addin" />
+    <EmbeddedResource Include="Resources\FlatPlaningGroup1.ico" />
     <EmbeddedResource Include="Resources\According.ico" />
     <EmbeddedResource Include="Resources\Filling.ico" />
-    <Content Include="Resources\FlatPlaning.ico" />
-    <EmbeddedResource Include="Resources\Group1.ico" />
-    <EmbeddedResource Include="Resources\iconParameters16.png" />
-    <EmbeddedResource Include="Resources\iconParameters32.png" />
+    <EmbeddedResource Include="Resources\About.ico" />
+    <EmbeddedResource Include="Resources\FlatPlaning.ico" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -114,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AboutWondowBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
