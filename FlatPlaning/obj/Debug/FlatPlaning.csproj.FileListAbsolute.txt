@@ -10,3 +10,16 @@ C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_M
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.lref
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutWondowBox.baml
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.g.resources
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csprojAssemblyReference.cache
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutWondowBox.g.cs
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.cache
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.lref
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.dll
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.pdb
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\bin\Debug\FlatPlaning.dll
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\bin\Debug\FlatPlaning.pdb
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutWondowBox.baml
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.g.resources
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.Properties.Resources.resources
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.GenerateResource.cache
+C:\Users\gregy\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.CoreCompileInputs.cache

@@ -33,13 +33,19 @@ namespace FlatPlaning
             {
                 try
                 {
+
+                        tx.Start("Transaction Name");
+
                     Document document = doc;
                     //FloorsSetup floorsFinishesSetup = new FloorsSetup();
                     //Load the selection form
+                    TaskDialog.Show("About", "Begin");
 
                     AboutWindowBox aboutWindow = new AboutWindowBox();
 
                     aboutWindow.InitializeComponent();
+                        tx.Commit();
+
 
                     return Result.Succeeded;
                 }

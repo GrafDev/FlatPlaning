@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:PropertyGrid="clr-namespace:UIFramework.PropertyGrid;assembly=UIFramework" 
-             xmlns:local="clr-namespace:RM"
+             xmlns:local="clr-namespace:FlatPlaning"
              mc:Ignorable="d"
              IsEnabled="True" Title="Create rooms finishes" DataContext="{Binding}" ShowInTaskbar="False" 
              WindowStartupLocation="CenterScreen" MinWidth="500" MinHeight="500" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" MaxWidth="800" Height="306" VerticalAlignment="Bottom" Width="749" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.CanContentScroll="True" MaxHeight="1200">

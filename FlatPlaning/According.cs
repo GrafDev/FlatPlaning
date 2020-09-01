@@ -25,7 +25,7 @@ namespace FlatPlaning
             Document doc = uidoc.Document;
 
             // Access current selection
-
+            TaskDialog.Show("According", "Begin");
             Selection sel = uidoc.Selection;
 
             // Retrieve elements from database
