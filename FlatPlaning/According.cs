@@ -2,11 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
+using FlatPlaning;
 #endregion
 
 namespace FlatPlaning
@@ -21,37 +24,17 @@ namespace FlatPlaning
         {
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
-            Application app = uiapp.Application;
+            Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;
             Document doc = uidoc.Document;
-
-            // Access current selection
-            TaskDialog.Show("According", "Begin");
-            Selection sel = uidoc.Selection;
-
-            // Retrieve elements from database
-
-            FilteredElementCollector col
-              = new FilteredElementCollector(doc)
-                .WhereElementIsNotElementType()
-                .OfCategory(BuiltInCategory.INVALID)
-                .OfClass(typeof(Wall));
-
-            // Filtered element collector is iterable
-
-            foreach (Element e in col)
-            {
-                Debug.Print(e.Name);
-            }
-
-            // Modify document within a transaction
-
-            using (Transaction tx = new Transaction(doc))
-            {
-                tx.Start("Transaction Name");
-                tx.Commit();
-            }
+            // Читаем имена параметров по умолчанию из файла
+            FlatPlaningData.ReadFromFile();
+            // Выводим диалог на изменение параметров по умолчанию
+            AccordingBox accordingBox = new AccordingBox(uidoc);
+            // Записываем имена параметров по умолчанию в файл 
+            FlatPlaningData.WriteToFile();
 
             return Result.Succeeded;
         }
     }
+
 }

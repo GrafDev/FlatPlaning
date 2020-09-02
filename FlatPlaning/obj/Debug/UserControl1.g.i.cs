@@ -36,9 +36,9 @@ namespace FlatPlaning {
     
     
     /// <summary>
-    /// UserControl1
+    /// According
     /// </summary>
-    public partial class UserControl1 : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
+    public partial class According : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         private bool _contentLoaded;
         

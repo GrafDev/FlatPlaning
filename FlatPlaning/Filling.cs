@@ -27,26 +27,12 @@ namespace FlatPlaning
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
 
-            // Access current selection
-            TaskDialog.Show("Filling", "Begin");
-            Selection sel = uidoc.Selection;
 
-            // Retrieve elements from database
-
-            FilteredElementCollector col
-              = new FilteredElementCollector(doc)
-                .WhereElementIsNotElementType()
-                .OfCategory(BuiltInCategory.INVALID)
-                .OfClass(typeof(Wall));
-
-            // Filtered element collector is iterable
-
-            foreach (Element e in col)
-            {
-                Debug.Print(e.Name);
-            }
-
-            // Modify document within a transaction
+            // Читаем имена параметров по умолчанию из файла
+            FlatPlaningData.ReadFromFile();
+            // Передаем имена параметров на расчет
+            // Делаем расчет 
+            // Записываем результат расчета в проект within a transaction
 
             using (Transaction tx = new Transaction(doc))
             {
