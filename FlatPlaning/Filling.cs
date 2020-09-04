@@ -26,10 +26,9 @@ namespace FlatPlaning
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Application app = uiapp.Application;
             Document doc = uidoc.Document;
-
-
+            DataFlatPlaning.doc = doc;
             // Читаем имена параметров по умолчанию из файла
-            FlatPlaningData.ReadFromFile();
+            DataFlatPlaning.ReadFromFile();
             // Передаем имена параметров на расчет
             // Делаем расчет 
             // Записываем результат расчета в проект within a transaction

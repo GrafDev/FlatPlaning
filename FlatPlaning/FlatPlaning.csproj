@@ -89,7 +89,7 @@
     <Compile Include="AboutBox.xaml.cs">
       <DependentUpon>AboutBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FlatPlaningData.cs" />
+    <Compile Include="DataFlatPlaning.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Filling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -26,12 +26,15 @@ namespace FlatPlaning
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;
             Document doc = uidoc.Document;
+
+            // Передаем документ в статический класс
             // Читаем имена параметров по умолчанию из файла
-            FlatPlaningData.ReadFromFile();
+            //DataFlatPlaning.ReadFromFile();
+
             // Выводим диалог на изменение параметров по умолчанию
-            AccordingBox accordingBox = new AccordingBox(uidoc);
+            //AccordingBox accordingBox = new AccordingBox(uidoc);
             // Записываем имена параметров по умолчанию в файл 
-            FlatPlaningData.WriteToFile();
+            DataFlatPlaning.WriteToFile();
 
             return Result.Succeeded;
         }
