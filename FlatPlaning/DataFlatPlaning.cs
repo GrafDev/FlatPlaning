@@ -10,43 +10,48 @@ using System.Globalization;
 using System.Diagnostics;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.DB.ExtensibleStorage;
+using System.Data;
+using System.Windows.Markup;
 
 namespace FlatPlaning
-{  
-    
+{
+
     internal class DataFlatPlaning
     {
+
         internal static Autodesk.Revit.DB.Document doc;
-        // Создаем структуру данных, прикрепляем ее к данным , заполняем ее данными и получаем данные обратно 
-        internal void StoreDataInProjectInfo(ProjectInfo pi, string dataToStore)
-    {
-        Transaction t = new Transaction(pi.Document, "tCreateAndStore");
-        t.Start();
-        SchemaBuilder sb =
-                new SchemaBuilder(new Guid("720080CB-DA99-40DC-9415-E53F280AAAAF"));
-        sb.SetReadAccessLevel(AccessLevel.Public); // разрешить кому угодно читать объект
-            sb.SetWriteAccessLevel(AccessLevel.Vendor); // ограничить запись только этому поставщику
-            sb.SetVendorId("ADSK"); // требуется из-за ограниченного доступа для записи
-            sb.SetSchemaName("DefaultParameter");
-            // создать поле для хранения string
-            FieldBuilder fieldBuilder =
-                sb.AddSimpleField("DefaultParameter", typeof(string));
-        fieldBuilder.SetDocumentation("A stored location value representing a wiring splice in a wall.");
+        static int nextNamberGuid = 0x0001;
+        internal static string schemaGuid = "720080CB-DA99-40DC-9415-E53F280A" + nextNamberGuid.ToString();
+        SchemaBuilder sb;
+        // Приращение Guid
+        internal DataFlatPlaning(string schemaName)
+        {
+            string tempSchemaGuid = schemaGuid;
+            int lastLetter = schemaGuid.Length - 5;
+            schemaGuid = schemaGuid.Substring(0, lastLetter);
+            sb=new SchemaBuilder(new Guid(schemaGuid));
+            nextNamberGuid++;
+        }
 
-        Schema schema = sb.Finish(); // register the Schema object
-        Entity entity = new Entity(schema); // create an entity (object) for this schema (class)
-        // get the field from the schema
-        Field fieldDefaultParameter = schema.GetField("DefaultParameter");
-        // set the value for this entity
-        entity.Set(fieldDefaultParameter, dataToStore);
-        pi.SetEntity(entity); // store the entity in the element
-        // get the data back from the wall
-        Entity retrievedEntity = pi.GetEntity(schema);
-        string retrievedData =
-                retrievedEntity.Get<string>( schema.GetField("DefaultParameter"));
-        t.Commit();
+        // Создаем описание хранилища
+        internal Schema SetDataFlatPlaning()
+        {
+            sb.SetSchemaName("StorageDefaultParametersRooms");
+            Schema sch = sb.Finish();
+            return sch;
+        }
 
-    }
+
+
+        // Выбираем элемент для хранения
+        // Записываем хранилище в элемент
+
+
+
+
+
+
+        //Сичтываем информацию из хранилища в элементе
         static internal void ReadFromFile()
         {
             // Читаем содержимое хранилища. 
@@ -55,17 +60,18 @@ namespace FlatPlaning
 
 
         }
+
+        // Проверяем наличие хранилища в элементе
         static internal void WriteToFile()
         {
 
             TaskDialog.Show("WriteToFile", "Ready");
-            ProjectInfo pi = doc.ProjectInformation;
-            DataFlatPlaning SetDefaultParameters = new DataFlatPlaning() ;
-           
+
+
             using (Transaction t = new Transaction(doc))
             {
                 t.Start("Create storage");
-                SetDefaultParameters.StoreDataInProjectInfo(pi, "RRRRRRRR");
+
                 t.Commit();
             }
 
