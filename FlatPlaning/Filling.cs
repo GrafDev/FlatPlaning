@@ -25,7 +25,7 @@ namespace FlatPlaning
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Application app = uiapp.Application;
-            Document doc = uidoc.Document;
+            Document doc = uidoc.Document;   
             DataFlatPlaning.doc = doc;
             // Читаем имена параметров по умолчанию из файла
             DataFlatPlaning.ReadFromFile();

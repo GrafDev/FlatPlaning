@@ -15,6 +15,7 @@ using FlatPlaning;
 namespace FlatPlaning
 {
     [Transaction(TransactionMode.Manual)]
+    // Комманда соответсвия параметров
     public class According : IExternalCommand
     {
         public Result Execute(
@@ -27,13 +28,6 @@ namespace FlatPlaning
             Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;
             Document doc = uidoc.Document;
 
-            // Передаем документ в статический класс
-            // Читаем имена параметров по умолчанию из файла
-            //DataFlatPlaning.ReadFromFile();
-
-            // Выводим диалог на изменение параметров по умолчанию
-            //AccordingBox accordingBox = new AccordingBox(uidoc);
-            // Записываем имена параметров по умолчанию в файл 
             DataFlatPlaning.WriteToFile();
 
             return Result.Succeeded;

@@ -12,6 +12,7 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.DB.ExtensibleStorage;
 using System.Data;
 using System.Windows.Markup;
+using Autodesk.Revit.DB.Analysis;
 
 namespace FlatPlaning
 {
@@ -19,27 +20,69 @@ namespace FlatPlaning
     internal class DataFlatPlaning
     {
 
-        internal static Autodesk.Revit.DB.Document doc;
-        static int nextNamberGuid = 0x0001;
-        internal static string schemaGuid = "720080CB-DA99-40DC-9415-E53F280A" + nextNamberGuid.ToString();
-        SchemaBuilder sb;
-        // Приращение Guid
-        internal DataFlatPlaning(string schemaName)
+        static internal Autodesk.Revit.DB.Document doc;
+        static internal Element elem;
+        static internal string schemaCurrentGuid = "720080CB-DA99-40DC-9415-E53F280A000C";
+        static SchemaBuilder sb = new SchemaBuilder(new Guid(schemaCurrentGuid));
+
+        DataFlatPlaning()
         {
-            string tempSchemaGuid = schemaGuid;
-            int lastLetter = schemaGuid.Length - 5;
-            schemaGuid = schemaGuid.Substring(0, lastLetter);
-            sb=new SchemaBuilder(new Guid(schemaGuid));
-            nextNamberGuid++;
+            // Создание хранилища параметров
+            // ..Описание хранилища
+            sb.SetReadAccessLevel(AccessLevel.Public);
+            sb.AddSimpleField("NumberFlat", typeof(string));
+            sb.AddSimpleField("TypeRoom", typeof(string));
+            sb.AddSimpleField("AreaFlat", typeof(string));
+            sb.AddSimpleField("AreaFlatCommon", typeof(string));
+            sb.AddSimpleField("AreaFlatLive", typeof(string));
+            sb.AddSimpleField("CountRoom", typeof(string));
+            sb.AddSimpleField("CoefficientRoom", typeof(string));
+            sb.AddSimpleField("AreaWithCoefficient", typeof(string));
+            sb.AddSimpleField("IndexRoom", typeof(string));
+            sb.SetSchemaName("StorageParametersRooms");
+            Schema sch = sb.Finish();
+            //..Выбор элемента для хранения
+            ProjectInfo pi = doc.ProjectInformation;
+            elem=pi as Element;
+            //..занесение данных в элемент
+            using (Transaction t = new Transaction(doc))
+            {
+                t.Start("Create storage");
+                Entity ent = new Entity(sch);
+                Field nameField=sch.GetField("NumberFlat");
+                ent.Set<string>(nameField, "ADSK_Номер квартиры");
+                nameField = sch.GetField("TypeRoom");
+                ent.Set<string>(nameField, "ADSK_Тип помещения");
+                nameField = sch.GetField("AreaFlat");
+                ent.Set<string>(nameField, "ADSK_Площадь квартиры");
+                nameField = sch.GetField("AreaFlatCommon");
+                ent.Set<string>(nameField, "ADSK_Площадь квартиры общая");
+                nameField = sch.GetField("AreaFlatLive");
+                ent.Set<string>(nameField, "ADSK_Площадь квартиры жилая");
+                nameField = sch.GetField("CountRoom");
+                ent.Set<string>(nameField, "ADSK_Число комнат");
+                nameField = sch.GetField("CoefficientRoom");
+                ent.Set<string>(nameField, "ADSK_Коэффициент площади");
+                nameField = sch.GetField("AreaWithCoefficient");
+                ent.Set<string>(nameField, "ADSK_Площадь с коэффициентом");
+                nameField = sch.GetField("IndexRoom");
+                ent.Set<string>(nameField, "ADSK_Индекс помещения");
+                elem.SetEntity(ent);
+                t.Commit();
+            }
         }
 
-        // Создаем описание хранилища
-        internal Schema SetDataFlatPlaning()
-        {
-            sb.SetSchemaName("StorageDefaultParametersRooms");
-            Schema sch = sb.Finish();
-            return sch;
-        }
+
+
+        // Создание полей
+
+
+        // Чтение параметров из хранилища
+        // Проверка наличия хранилища в элементе
+
+
+
+
 
 
 
@@ -61,7 +104,7 @@ namespace FlatPlaning
 
         }
 
-        // Проверяем наличие хранилища в элементе
+
         static internal void WriteToFile()
         {
 
