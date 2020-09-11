@@ -80,6 +80,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FillingBox.xaml.cs">
+      <DependentUpon>FillingBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AccordingBox.xaml.cs">
       <DependentUpon>AccordingBox.xaml</DependentUpon>
     </Compile>
@@ -89,7 +92,7 @@
     <Compile Include="AboutBox.xaml.cs">
       <DependentUpon>AboutBox.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DataFlatPlaning.cs" />
+    <Compile Include="dfp.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="Filling.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,6 +120,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="FillingBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="AccordingBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

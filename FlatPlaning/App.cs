@@ -23,7 +23,7 @@ namespace FlatPlaning
         public Result OnStartup(UIControlledApplication application)
         {
             UIControlledApplication app = application;
-            Util.GetLocalisationValues(app);
+            //Util.GetLocalisationValues(app);
             string NameOfApp = "FlatPlaning";
             { // Лента
                 RibbonInitialize panel = new RibbonInitialize(app, NameOfApp);

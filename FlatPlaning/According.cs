@@ -27,9 +27,7 @@ namespace FlatPlaning
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Autodesk.Revit.ApplicationServices.Application app = uiapp.Application;
             Document doc = uidoc.Document;
-
-            DataFlatPlaning.WriteToFile();
-
+            TaskDialog.Show("According","According");
             return Result.Succeeded;
         }
     }

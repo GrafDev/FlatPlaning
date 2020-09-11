@@ -19,27 +19,68 @@ namespace FlatPlaning
     {
         public Result Execute(
           ExternalCommandData commandData,
-          ref string message,
+          ref string messageErr,
           ElementSet elements)
         {
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Application app = uiapp.Application;
-            Document doc = uidoc.Document;   
-            DataFlatPlaning.doc = doc;
-            // Читаем имена параметров по умолчанию из файла
-            DataFlatPlaning.ReadFromFile();
-            // Передаем имена параметров на расчет
-            // Делаем расчет 
-            // Записываем результат расчета в проект within a transaction
+            Document doc = uidoc.Document;
 
             using (Transaction tx = new Transaction(doc))
             {
-                tx.Start("Transaction Name");
-                tx.Commit();
+                try
+                {
+
+                    tx.Start("Transaction Name");
+
+                    Document document = doc;
+                    //FloorsSetup floorsFinishesSetup = new FloorsSetup();
+                    //Load the selection form
+                    FillingBox fillingWindow = new FillingBox(uidoc);
+                    fillingWindow.InitializeComponent();
+
+                    dfp.PrintAreaRooms();
+                    tx.Commit();
+
+
+                    return Result.Succeeded;
+                }
+
+                catch (Autodesk.Revit.Exceptions.OperationCanceledException exceptionCanceled)
+                {
+                    messageErr = exceptionCanceled.Message;
+                    if (tx.HasStarted())
+                    {
+                        tx.RollBack();
+                    }
+                    return Autodesk.Revit.UI.Result.Cancelled;
+                }
+                catch (ErrorMessageException errorEx)
+                {
+                    // checked exception need to show in error messagebox
+                    messageErr = errorEx.Message;
+                    if (tx.HasStarted())
+                    {
+                        tx.RollBack();
+                    }
+                    return Autodesk.Revit.UI.Result.Failed;
+                }
+                catch (Exception ex)
+                {
+                    // unchecked exception cause command failed
+                    messageErr = Util.GetLanguageResources.GetString("Error") + ex.Message;
+                    //Trace.WriteLine(ex.ToString());
+                    if (tx.HasStarted())
+                    {
+                        tx.RollBack();
+                    }
+                    return Autodesk.Revit.UI.Result.Failed;
+                }
+
             }
 
-            return Result.Succeeded;
         }
     }
+
 }

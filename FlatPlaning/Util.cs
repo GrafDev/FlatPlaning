@@ -27,13 +27,14 @@ namespace FlatPlaning
             {
                 // Create the culture for russian
                 Util.Cult = CultureInfo.CreateSpecificCulture("ru");
-                Util.GetLanguageResources = new System.Resources.ResourceManager("RM.Resources.rus", System.Reflection.Assembly.GetExecutingAssembly());
+                Util.GetLanguageResources = new System.Resources.ResourceManager("FlatPlaning.Resources.rus", System.Reflection.Assembly.GetExecutingAssembly());
+                // TODO: Необходимо сделать файл ресурсов
             }
             else
             {
                 // Create the culture for english
                 Util.Cult = CultureInfo.CreateSpecificCulture("en");
-                Util.GetLanguageResources = new System.Resources.ResourceManager("RM.Resources.eng", System.Reflection.Assembly.GetExecutingAssembly());
+                Util.GetLanguageResources = new System.Resources.ResourceManager("FlatPlaning.Resources.eng", System.Reflection.Assembly.GetExecutingAssembly());
             }
         }
 

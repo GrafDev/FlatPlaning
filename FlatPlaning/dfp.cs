@@ -13,66 +13,62 @@ using Autodesk.Revit.DB.ExtensibleStorage;
 using System.Data;
 using System.Windows.Markup;
 using Autodesk.Revit.DB.Analysis;
+using System.Runtime.CompilerServices;
 
 namespace FlatPlaning
 {
 
-    internal class DataFlatPlaning
+    static internal class dfp
     {
 
         static internal Autodesk.Revit.DB.Document doc;
-        static internal Element elem;
-        static internal string schemaCurrentGuid = "720080CB-DA99-40DC-9415-E53F280A000C";
-        static SchemaBuilder sb = new SchemaBuilder(new Guid(schemaCurrentGuid));
+        /*const  string SCHEMA_CURRENT_GUID = "720080CB-DA99-40DC-9415-E53F280A000C";
+        static SchemaBuilder sb = new SchemaBuilder(new Guid(SCHEMA_CURRENT_GUID));*/
+        const string  DEFAULT_NUMBER_FLAT = "ADSK_Номер квартиры",
+                      DEFAULT_TYPE_ROOM = "ADSK_Тип помещения",
+                      DEFAULT_AREA_FLAT = "ADSK_Площадь квартиры",
+                      DEFAULT_AREA_FLAT_COMMON = "ADSK_Площадь квартиры общая",
+                      DEFAULT_AREA_FLAT_LIVE = "ADSK_Площадь квартиры жилая",
+                      DEFAULT_COUNT_ROOM = "ADSK_Число комнат",
+                      DEFAULT_COEFFICIENT_ROOM = "ADSK_Коэффициент площади",
+                      DEFAULT_AREA_WITH_COEFFICIENT = "ADSK_Площадь с коэффициентом",
+                      DEFAULT_INDEX_ROOM = "ADSK_Индекс помещения";
+        static internal string currentNumberFlat;
+        static internal string currentTypeRoom;
+        static internal string currentAreaFlat;
+        static internal string currentAreaFlatCommon;
+        static internal string currentAreaFlatLive;
+        static internal string currentCountRoom;
+        static internal string currentCoefficientRoom;
+        static internal string currentAreaWithCoefficient;
+        static internal string currentIndexRoom;
 
-        DataFlatPlaning()
+        static internal List<Room> SelectedRoom { get; set; }
+
+
+        static dfp()
         {
-            // Создание хранилища параметров
-            // ..Описание хранилища
-            sb.SetReadAccessLevel(AccessLevel.Public);
-            sb.AddSimpleField("NumberFlat", typeof(string));
-            sb.AddSimpleField("TypeRoom", typeof(string));
-            sb.AddSimpleField("AreaFlat", typeof(string));
-            sb.AddSimpleField("AreaFlatCommon", typeof(string));
-            sb.AddSimpleField("AreaFlatLive", typeof(string));
-            sb.AddSimpleField("CountRoom", typeof(string));
-            sb.AddSimpleField("CoefficientRoom", typeof(string));
-            sb.AddSimpleField("AreaWithCoefficient", typeof(string));
-            sb.AddSimpleField("IndexRoom", typeof(string));
-            sb.SetSchemaName("StorageParametersRooms");
-            Schema sch = sb.Finish();
-            //..Выбор элемента для хранения
-            ProjectInfo pi = doc.ProjectInformation;
-            elem=pi as Element;
-            //..занесение данных в элемент
-            using (Transaction t = new Transaction(doc))
-            {
-                t.Start("Create storage");
-                Entity ent = new Entity(sch);
-                Field nameField=sch.GetField("NumberFlat");
-                ent.Set<string>(nameField, "ADSK_Номер квартиры");
-                nameField = sch.GetField("TypeRoom");
-                ent.Set<string>(nameField, "ADSK_Тип помещения");
-                nameField = sch.GetField("AreaFlat");
-                ent.Set<string>(nameField, "ADSK_Площадь квартиры");
-                nameField = sch.GetField("AreaFlatCommon");
-                ent.Set<string>(nameField, "ADSK_Площадь квартиры общая");
-                nameField = sch.GetField("AreaFlatLive");
-                ent.Set<string>(nameField, "ADSK_Площадь квартиры жилая");
-                nameField = sch.GetField("CountRoom");
-                ent.Set<string>(nameField, "ADSK_Число комнат");
-                nameField = sch.GetField("CoefficientRoom");
-                ent.Set<string>(nameField, "ADSK_Коэффициент площади");
-                nameField = sch.GetField("AreaWithCoefficient");
-                ent.Set<string>(nameField, "ADSK_Площадь с коэффициентом");
-                nameField = sch.GetField("IndexRoom");
-                ent.Set<string>(nameField, "ADSK_Индекс помещения");
-                elem.SetEntity(ent);
-                t.Commit();
-            }
+            currentNumberFlat = DEFAULT_NUMBER_FLAT;
+            currentTypeRoom = DEFAULT_TYPE_ROOM;
+            currentAreaFlat= DEFAULT_AREA_FLAT;
+            currentAreaFlatCommon = DEFAULT_AREA_FLAT_COMMON;
+            currentAreaFlatLive= DEFAULT_AREA_FLAT_LIVE;
+            currentCountRoom= DEFAULT_COUNT_ROOM;
+            currentCoefficientRoom= DEFAULT_COEFFICIENT_ROOM;
+            currentAreaWithCoefficient= DEFAULT_AREA_WITH_COEFFICIENT;
+            currentIndexRoom= DEFAULT_INDEX_ROOM;
+
         }
 
-
+        static internal void PrintAreaRooms()
+        {
+            string name = "";
+            foreach(Room room in SelectedRoom)
+            {
+                name = name + room.Area.ToString() + "\n";
+            }
+            TaskDialog.Show("Rooms",name);
+        }
 
         // Создание полей
 
@@ -98,8 +94,7 @@ namespace FlatPlaning
         static internal void ReadFromFile()
         {
             // Читаем содержимое хранилища. 
-            TaskDialog.Show("ReadFromFile", "Ready");
-
+            TaskDialog.Show("ReadFromFile", "ReadFromFile");
 
 
         }
@@ -108,7 +103,7 @@ namespace FlatPlaning
         static internal void WriteToFile()
         {
 
-            TaskDialog.Show("WriteToFile", "Ready");
+            TaskDialog.Show("WriteToFile", "WriteToFile");
 
 
             using (Transaction t = new Transaction(doc))
@@ -122,6 +117,7 @@ namespace FlatPlaning
 
 
     }
+
 }
 
 /*internal static void SetDefaultParameters()
