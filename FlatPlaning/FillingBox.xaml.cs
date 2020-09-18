@@ -20,6 +20,7 @@ using System.Globalization;
 using System.Resources;
 using System.Reflection.Emit;
 using System.Reflection;
+using Autodesk.Windows;
 
 namespace FlatPlaning
 {
@@ -31,6 +32,7 @@ namespace FlatPlaning
     {
         private Document _doc;
         private UIDocument _UIDoc;
+        // Создаем окно выбора помещений
         public FillingBox(UIDocument UIDoc)
         {
             _doc = UIDoc.Document;
@@ -43,8 +45,13 @@ namespace FlatPlaning
         private void Button_Click(object sender, RoutedEventArgs e)
         {  
             this.Close();
-            dfp.SelectedRoom = SelectRooms().ToList();
-            TaskDialog.Show("Selected Rooms", dfp.SelectedRoom.ToString());
+            CountFlat countFlat = new CountFlat();
+            countFlat.SelectedRoom = SelectRooms().ToList();
+            countFlat.GetParanetersRooms();
+            countFlat.PrintAreaRooms();
+            countFlat.PrintNameRooms();
+            //countFlat.PrintNumberRooms();
+
         }
 
         // выбор помещений
@@ -56,13 +63,15 @@ namespace FlatPlaning
             IEnumerable<Room> ModelRooms = null;
             IList<Room> tempList = new List<Room>();
 
-
+            // Проверяем выбраный вариант
+            //..все на виде
             if (AllRoomsOnView.IsChecked.Value)
             {
                 ModelRooms = from elem in new FilteredElementCollector(_doc, _doc.ActiveView.Id).OfClass(typeof(SpatialElement))
                              let room = elem as Room
                              select room;
             }
+            //..выбраные помещения
             else if (SelectedRooms.IsChecked.Value)
             {
                 
@@ -93,25 +102,23 @@ namespace FlatPlaning
                     ModelRooms = tempList;
                 }
             }
+            //..все в проекте.
             else
             {
                 ModelRooms = from elem in new FilteredElementCollector(_doc).OfClass(typeof(SpatialElement))
                              let room = elem as Room
                              select room;
             }
-
-            TaskDialog.Show("OK", GetListNameRooms(ModelRooms));
-
-           // если нчиего не выбрано
+           // ..если нчиего не выбрано
             {
                 if (ModelRooms.LongCount() == 0 && (AllRooms.IsChecked.Value||AllRoomsOnView.IsChecked.Value))
                 {
-                    TaskDialog.Show("Ошибка выбора помещений", "Команда не выполнена, так как не было найдено ни одного помещения на данном виде. Попробуйте перейти на другой вид и выполнить команду еще раз.");
+                    Autodesk.Revit.UI.TaskDialog.Show("Ошибка выбора помещений", "Команда не выполнена, так как не было найдено ни одного помещения на данном виде. Попробуйте перейти на другой вид и выполнить команду еще раз.");
                     
                 }
                 else if (ModelRooms.LongCount() == 0)
                 {
-                    TaskDialog.Show("Ошибка выбора помещений", "Не было выбрано ни одного помещения.");
+                    Autodesk.Revit.UI.TaskDialog.Show("Ошибка выбора помещений", "Не было выбрано ни одного помещения.");
                     this.Activate();
 
                 }
@@ -120,12 +127,7 @@ namespace FlatPlaning
         }
 
 
-        //Фильтр, ограничивающий выбор только комнатами 
-        public class RoomPickFilter
-        {
-            public bool AllowElement(Element e)
-            { return (e.Category.Id.IntegerValue.Equals((int)BuiltInCategory.OST_Rooms)); }
-        }
+        
 
         private string GetListNameRooms(IEnumerable<Room> Rooms)
         {

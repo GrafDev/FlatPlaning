@@ -24,7 +24,7 @@ namespace FlatPlaning
         static internal Autodesk.Revit.DB.Document doc;
         /*const  string SCHEMA_CURRENT_GUID = "720080CB-DA99-40DC-9415-E53F280A000C";
         static SchemaBuilder sb = new SchemaBuilder(new Guid(SCHEMA_CURRENT_GUID));*/
-        const string  DEFAULT_NUMBER_FLAT = "ADSK_Номер квартиры",
+        internal const string  DEFAULT_NUMBER_FLAT = "ADSK_Номер квартиры",
                       DEFAULT_TYPE_ROOM = "ADSK_Тип помещения",
                       DEFAULT_AREA_FLAT = "ADSK_Площадь квартиры",
                       DEFAULT_AREA_FLAT_COMMON = "ADSK_Площадь квартиры общая",
@@ -33,6 +33,7 @@ namespace FlatPlaning
                       DEFAULT_COEFFICIENT_ROOM = "ADSK_Коэффициент площади",
                       DEFAULT_AREA_WITH_COEFFICIENT = "ADSK_Площадь с коэффициентом",
                       DEFAULT_INDEX_ROOM = "ADSK_Индекс помещения";
+
         static internal string currentNumberFlat;
         static internal string currentTypeRoom;
         static internal string currentAreaFlat;
@@ -42,8 +43,19 @@ namespace FlatPlaning
         static internal string currentCoefficientRoom;
         static internal string currentAreaWithCoefficient;
         static internal string currentIndexRoom;
+        static internal List<string> listParameters = new List<string> {
+            currentNumberFlat,
+            currentTypeRoom,
+            currentAreaFlat,
+            currentAreaFlatCommon,
+            currentAreaFlatLive,
+            currentCountRoom,
+            currentCoefficientRoom,
+            currentAreaWithCoefficient,
+            currentIndexRoom
+        };
+    
 
-        static internal List<Room> SelectedRoom { get; set; }
 
 
         static dfp()
@@ -60,38 +72,18 @@ namespace FlatPlaning
 
         }
 
-        static internal void PrintAreaRooms()
-        {
-            string name = "";
-            foreach(Room room in SelectedRoom)
-            {
-                name = name + room.Area.ToString() + "\n";
-            }
-            TaskDialog.Show("Rooms",name);
-        }
+
 
         // Создание полей
 
 
         // Чтение параметров из хранилища
         // Проверка наличия хранилища в элементе
-
-
-
-
-
-
-
         // Выбираем элемент для хранения
         // Записываем хранилище в элемент
 
-
-
-
-
-
         //Сичтываем информацию из хранилища в элементе
-        static internal void ReadFromFile()
+        static internal void ReadFromFile()//TODO:
         {
             // Читаем содержимое хранилища. 
             TaskDialog.Show("ReadFromFile", "ReadFromFile");
@@ -100,7 +92,7 @@ namespace FlatPlaning
         }
 
 
-        static internal void WriteToFile()
+        static internal void WriteToFile()//TODO:
         {
 
             TaskDialog.Show("WriteToFile", "WriteToFile");

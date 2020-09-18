@@ -39,8 +39,6 @@ namespace FlatPlaning
                     //Load the selection form
                     FillingBox fillingWindow = new FillingBox(uidoc);
                     fillingWindow.InitializeComponent();
-
-                    dfp.PrintAreaRooms();
                     tx.Commit();
 
 

@@ -34,6 +34,5 @@ C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.c
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.CopyComplete
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.dll
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.pdb
-C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csprojAssemblyReference.cache
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FillingBox.g.cs
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FillingBox.baml

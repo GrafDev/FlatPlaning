@@ -80,6 +80,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountFlat.cs" />
     <Compile Include="FillingBox.xaml.cs">
       <DependentUpon>FillingBox.xaml</DependentUpon>
     </Compile>
