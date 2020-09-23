@@ -24,6 +24,7 @@ namespace FlatPlaning
         static internal Autodesk.Revit.DB.Document doc;
         /*const  string SCHEMA_CURRENT_GUID = "720080CB-DA99-40DC-9415-E53F280A000C";
         static SchemaBuilder sb = new SchemaBuilder(new Guid(SCHEMA_CURRENT_GUID));*/
+
         internal const string  DEFAULT_NUMBER_FLAT = "ADSK_Номер квартиры",
                       DEFAULT_TYPE_ROOM = "ADSK_Тип помещения",
                       DEFAULT_AREA_FLAT = "ADSK_Площадь квартиры",
@@ -43,7 +44,8 @@ namespace FlatPlaning
         static internal string currentCoefficientRoom;
         static internal string currentAreaWithCoefficient;
         static internal string currentIndexRoom;
-        static internal List<string> listParameters = new List<string> {
+        static internal List<string> listParameters = new List<string> 
+            {
             currentNumberFlat,
             currentTypeRoom,
             currentAreaFlat,
@@ -53,13 +55,10 @@ namespace FlatPlaning
             currentCoefficientRoom,
             currentAreaWithCoefficient,
             currentIndexRoom
-        };
-    
-
-
+            }; 
 
         static dfp()
-        {
+            {
             currentNumberFlat = DEFAULT_NUMBER_FLAT;
             currentTypeRoom = DEFAULT_TYPE_ROOM;
             currentAreaFlat= DEFAULT_AREA_FLAT;
@@ -69,8 +68,7 @@ namespace FlatPlaning
             currentCoefficientRoom= DEFAULT_COEFFICIENT_ROOM;
             currentAreaWithCoefficient= DEFAULT_AREA_WITH_COEFFICIENT;
             currentIndexRoom= DEFAULT_INDEX_ROOM;
-
-        }
+            }
 
 
 

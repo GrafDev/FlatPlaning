@@ -32,6 +32,7 @@ namespace FlatPlaning
     {
         private Document _doc;
         private UIDocument _UIDoc;
+        
         // Создаем окно выбора помещений
         public FillingBox(UIDocument UIDoc)
         {
@@ -45,13 +46,18 @@ namespace FlatPlaning
         private void Button_Click(object sender, RoutedEventArgs e)
         {  
             this.Close();
+            Test.Show(@"Close");
             CountFlat countFlat = new CountFlat();
             countFlat.SelectedRoom = SelectRooms().ToList();
-            countFlat.GetParanetersRooms();
+            Test.Show(@"Помещения выбраны");
+            countFlat.GetParametersRooms();
+            Test.Show(@"countFlat.GetParametersRooms();");
+            countFlat.PrintNumberFlat();
+            Test.Show(@"countFlat.PrintNumberFlat();");
+            countFlat.PrintTypeRooms();
+            Test.Show(@"countFlat.PrintTypeRooms();");
             countFlat.PrintAreaRooms();
-            countFlat.PrintNameRooms();
-            //countFlat.PrintNumberRooms();
-
+            Test.Show(@"PrintAreaRooms();");
         }
 
         // выбор помещений

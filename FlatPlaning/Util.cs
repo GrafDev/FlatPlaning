@@ -72,6 +72,19 @@ namespace FlatPlaning
             }
         }
     }
+    static class Test
+    {
+        static int count = 0;
+         internal static void Show(string s)
+        {
+            count++;
+            Autodesk.Revit.UI.TaskDialog.Show(count.ToString(), s);
+        }
+
+  
+
+
+    }
     public class ErrorMessageException : ApplicationException
     {
         /// <summary>

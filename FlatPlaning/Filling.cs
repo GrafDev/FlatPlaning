@@ -37,6 +37,8 @@ namespace FlatPlaning
                     Document document = doc;
                     //FloorsSetup floorsFinishesSetup = new FloorsSetup();
                     //Load the selection form
+                    Test.Show(@"->FillingBox fillingWindow = new FillingBox(uidoc);
+                    fillingWindow.InitializeComponent(); ");
                     FillingBox fillingWindow = new FillingBox(uidoc);
                     fillingWindow.InitializeComponent();
                     tx.Commit();
