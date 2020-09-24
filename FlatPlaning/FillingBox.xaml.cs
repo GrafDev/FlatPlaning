@@ -46,18 +46,9 @@ namespace FlatPlaning
         private void Button_Click(object sender, RoutedEventArgs e)
         {  
             this.Close();
-            Test.Show(@"Close");
-            CountFlat countFlat = new CountFlat();
-            countFlat.SelectedRoom = SelectRooms().ToList();
-            Test.Show(@"Помещения выбраны");
-            countFlat.GetParametersRooms();
-            Test.Show(@"countFlat.GetParametersRooms();");
-            countFlat.PrintNumberFlat();
-            Test.Show(@"countFlat.PrintNumberFlat();");
-            countFlat.PrintTypeRooms();
-            Test.Show(@"countFlat.PrintTypeRooms();");
-            countFlat.PrintAreaRooms();
-            Test.Show(@"PrintAreaRooms();");
+            Rooms rooms = new Rooms(SelectRooms().ToList());
+            Flats flats = new Flats(rooms._rooms);
+            flats.WriteParametersToRooms();
         }
 
         // выбор помещений
