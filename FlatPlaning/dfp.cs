@@ -24,13 +24,14 @@ namespace FlatPlaning
         static internal Autodesk.Revit.DB.Document doc;
         /*const  string SCHEMA_CURRENT_GUID = "720080CB-DA99-40DC-9415-E53F280A000C";
         static SchemaBuilder sb = new SchemaBuilder(new Guid(SCHEMA_CURRENT_GUID));*/
+        static internal bool dialogBox=true;
 
         internal const string  DEFAULT_NUMBER_FLAT = "ADSK_Номер квартиры",
                       DEFAULT_TYPE_ROOM = "ADSK_Тип помещения",
                       DEFAULT_AREA_FLAT = "ADSK_Площадь квартиры",
                       DEFAULT_AREA_FLAT_COMMON = "ADSK_Площадь квартиры общая",
                       DEFAULT_AREA_FLAT_LIVE = "ADSK_Площадь квартиры жилая",
-                      DEFAULT_COUNT_ROOM = "ADSK_Число комнат",
+                      DEFAULT_COUNT_ROOM = "ADSK_Количество комнат",
                       DEFAULT_COEFFICIENT_ROOM = "ADSK_Коэффициент площади",
                       DEFAULT_AREA_WITH_COEFFICIENT = "ADSK_Площадь с коэффициентом",
                       DEFAULT_INDEX_ROOM = "ADSK_Индекс помещения";
@@ -39,7 +40,7 @@ namespace FlatPlaning
         static internal string currentTypeRoom;
         static internal string currentAreaFlat;
         static internal string currentAreaFlatCommon;
-        static internal string currentAreaFlatLive;
+        static internal string currentAreaFlatLiving;
         static internal string currentCountRoom;
         static internal string currentCoefficientRoom;
         static internal string currentAreaWithCoefficient;
@@ -50,7 +51,7 @@ namespace FlatPlaning
             currentTypeRoom,
             currentAreaFlat,
             currentAreaFlatCommon,
-            currentAreaFlatLive,
+            currentAreaFlatLiving,
             currentCountRoom,
             currentCoefficientRoom,
             currentAreaWithCoefficient,
@@ -63,7 +64,7 @@ namespace FlatPlaning
             currentTypeRoom = DEFAULT_TYPE_ROOM;
             currentAreaFlat= DEFAULT_AREA_FLAT;
             currentAreaFlatCommon = DEFAULT_AREA_FLAT_COMMON;
-            currentAreaFlatLive= DEFAULT_AREA_FLAT_LIVE;
+            currentAreaFlatLiving= DEFAULT_AREA_FLAT_LIVE;
             currentCountRoom= DEFAULT_COUNT_ROOM;
             currentCoefficientRoom= DEFAULT_COEFFICIENT_ROOM;
             currentAreaWithCoefficient= DEFAULT_AREA_WITH_COEFFICIENT;

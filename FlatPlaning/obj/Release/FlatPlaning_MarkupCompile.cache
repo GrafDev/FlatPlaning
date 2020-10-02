@@ -4,15 +4,15 @@
 library
 C#
 .cs
-C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Release\
 FlatPlaning
 none
 false
-DEBUG;TRACE
+TRACE
 
 32091274131
 1-1675349502
-15-1765174771
+14-922815404
 191823005057
 AboutBox.xaml;FillingBox.xaml;AccordingBox.xaml;
 

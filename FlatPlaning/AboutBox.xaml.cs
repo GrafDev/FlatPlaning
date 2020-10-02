@@ -42,6 +42,12 @@ namespace FlatPlaning
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            dfp.dialogBox = check_dialogbox.IsChecked.Value;
+        }
+
+        private void check_dialogbox_Checked(object sender, RoutedEventArgs e)
+        {
+            check_dialogbox.IsChecked=dfp.dialogBox;
         }
     }
 }

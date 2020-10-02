@@ -11,11 +11,14 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.UI;
 using Autodesk.RevitAddIns;
 using System.Windows.Data;
+using System.Diagnostics;
+using Autodesk.Revit.DB.Architecture;
 
 namespace FlatPlaning
 {
     class Util
     {
+
         // Define cultureInfo
         public static ResourceManager GetLanguageResources;   // declare Resource manager to access to specific cultureinfo
         public static CultureInfo Cult;        // declare culture info
@@ -51,9 +54,6 @@ namespace FlatPlaning
                 return null;
             }
         }
-
-
-
         public static void ExtractRessource(string resourceName, string path)
         {
             using (Stream input = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream(resourceName))
@@ -71,11 +71,71 @@ namespace FlatPlaning
 
             }
         }
+        public static Definition GetDefinition(Element e, string parameter_name)
+        {
+            IList<Parameter> ps = e.GetParameters(parameter_name);
+
+            int n = ps.Count;
+
+            Debug.Assert(1 >= n,
+              "expected maximum one shared parameters "
+              + "named " + parameter_name);
+
+            Definition d = (0 == n)
+              ? null
+              : ps[0].Definition;
+            return d;
+        }
+        public enum RoomState
+        {
+            Unknown,
+            Placed,
+            NotPlaced,
+            NotEnclosed,
+            Redundant
+        }
+
+        /// <summary>
+        /// Определение не размещенных, избыточных и не окруженных помещений
+        /// </summary>
+        public static RoomState DistinguishRoom(Room room)
+        {
+            RoomState res = RoomState.Unknown;
+
+            if (room.Area > 0)
+            {
+                // Если есть площадь, то помещение нормальное
+
+                res = RoomState.Placed;
+            }
+            else if (null == room.Location)
+            {
+                //Нет площади и расположения – не размещено
+
+                res = RoomState.NotPlaced;
+            }
+            else
+            {
+                // Если сюда попали, то либо избыточное, либо не окружено
+               // Test.Show("Избыточное");
+                SpatialElementBoundaryOptions opt
+                  = new SpatialElementBoundaryOptions();
+
+                IList<IList<BoundarySegment>> segs
+                  = room.GetBoundarySegments(opt);
+
+                res = (null == segs || segs.Count == 0)
+                  ? RoomState.NotEnclosed
+                  : RoomState.Redundant;
+            }
+            return res;
+        }
+
     }
-    static class Test
+    internal static class Test
     {
         static int count = 0;
-         internal static void Show(string s)
+         internal static void  Show(string s)
         {
             count++;
             Autodesk.Revit.UI.TaskDialog.Show(count.ToString(), s);
@@ -104,5 +164,6 @@ namespace FlatPlaning
         {
         }
     }
+
 
 }

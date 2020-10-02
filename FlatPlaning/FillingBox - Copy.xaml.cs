@@ -52,7 +52,7 @@ namespace FlatPlaning
             Flats flats = new Flats(rooms._rooms);
             flats.CalculationParametersFlat();
             flats.WriteParametersToRooms();
-            //flats.ShowFlats();
+            flats.ShowFlats();
         }
 
         // выбор помещений
@@ -104,13 +104,13 @@ namespace FlatPlaning
                 }
             }
             //..все в проекте.
-            else if (AllRooms.IsChecked.Value)
+            else
             {
                 ModelRooms = from elem in new FilteredElementCollector(_doc).OfClass(typeof(SpatialElement))
                              let room = elem as Room
                              select room;
             }
-           // ..если ничего не выбрано
+           // ..если нчиего не выбрано
             {
                 if (ModelRooms.LongCount() == 0 && (AllRooms.IsChecked.Value||AllRoomsOnView.IsChecked.Value))
                 {
@@ -124,10 +124,11 @@ namespace FlatPlaning
 
                 }
             }
-
-
             return ModelRooms;
-        }        
+        }
+
+
+        
 
         private string GetListNameRooms(IEnumerable<Room> Rooms)
         {
@@ -154,6 +155,7 @@ namespace FlatPlaning
                 return false;
             }
         }
+
     }
 
 }

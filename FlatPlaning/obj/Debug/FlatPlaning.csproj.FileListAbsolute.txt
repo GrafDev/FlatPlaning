@@ -21,14 +21,14 @@ C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\bin\Debug\UIFramework.d
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\bin\Debug\UIFrameworkServices.dll
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\bin\Debug\RevitAPI.xml
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\bin\Debug\RevitAPIUI.xml
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutBox.g.cs
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FillingBox.g.cs
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AccordingBox.g.cs
-C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutBox.g.cs
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.cache
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.lref
+C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutBox.baml
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FillingBox.baml
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AccordingBox.baml
-C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\AboutBox.baml
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.g.resources
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.Properties.Resources.resources
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.GenerateResource.cache
@@ -36,4 +36,3 @@ C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.c
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.CopyComplete
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.dll
 C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.pdb
-C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csprojAssemblyReference.cache

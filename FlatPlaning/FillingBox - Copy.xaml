@@ -7,19 +7,16 @@
              xmlns:local="clr-namespace:FlatPlaning"
              mc:Ignorable="d"
              IsEnabled="True" Title="Filling" DataContext="{Binding}" ShowInTaskbar="False" 
-                    WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Width="350" Height="246" MinWidth="350" MinHeight="200" MaxWidth="350" MaxHeight="250">
+                    WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Width="350" Height="200" MinWidth="350" MinHeight="200" MaxWidth="350" MaxHeight="250">
     <Grid Margin="0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="Ok_Button" Content="OK" HorizontalAlignment="Center" Margin="0,0,0,15" VerticalAlignment="Bottom" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Click="Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Grid Margin="10,5,10,91">
+        <Grid Margin="10,5,10,50">
             <RadioButton Content="Все помещения на текущем виде" Name="AllRoomsOnView" IsChecked="True" Margin="20,10,0,0" VerticalAlignment="Top" Height="20"/>
             <RadioButton Content="Все помещения в проекте" Name="AllRooms"  Margin="20,0,0,0" VerticalAlignment="Center" Height="20"/>
             <RadioButton Content="Выбранные помещения" Name="SelectedRooms" Margin="20,0,0,10" VerticalAlignment="Bottom" Height="20"/>
-        </Grid>
-        <Grid Margin="10,125,10,50">
-            <CheckBox x:Name="mark_flat" Content="Устанавливать марки квартир" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>

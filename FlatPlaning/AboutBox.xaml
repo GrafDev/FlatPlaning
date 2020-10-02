@@ -13,6 +13,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="Ok_Button" Content="Button" HorizontalAlignment="Center" Margin="0,0,0,20" VerticalAlignment="Bottom" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Click="Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="AboutText" Margin="10,10,10,80" TextWrapping="Wrap" Text="TextBox"/>
+        <TextBox x:Name="AboutText" Margin="10,10,10,130" TextWrapping="Wrap" Text="TextBox"/>
+        <Grid HorizontalAlignment="Left" Height="59" Margin="10,361,0,0" VerticalAlignment="Top" Width="522">
+            <CheckBox x:Name="check_dialogbox" Content="Выводить диалоговое окно о количестве обработанных квартир" HorizontalAlignment="Left" Margin="20,24,0,0" VerticalAlignment="Top" IsChecked="True" Checked="check_dialogbox_Checked"/>
+        </Grid>
     </Grid>
 </Window>

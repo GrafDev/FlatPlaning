@@ -15,101 +15,147 @@ using System.Windows.Markup;
 using Autodesk.Revit.DB.Analysis;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
+using FlatPlaning;
 
 namespace FlatPlaning
 {
     class Rooms
     {
-        internal List<_Room> _rooms = new List<_Room>();
+        internal List<_Room> _rooms;
         internal Rooms(List<Room> rooms)
         {
+            _rooms = new List<_Room>();
+
             // заполняем параметры помещений
             foreach (Room room in rooms)
             {
-                _Room flatTemp = new _Room();
-                flatTemp.room = room;
-                _rooms.Add(flatTemp);
+                Util.RoomState roomPlaced = Util.RoomState.Placed;
+                Util.RoomState checkRoom = Util.DistinguishRoom(room);
+                if (checkRoom == roomPlaced)
+                {
+                    // .. Проверка на наличие номера квартиры
+                    string nameP = dfp.currentNumberFlat;
+                    Parameter parameterRoom = room.get_Parameter(Util.GetDefinition(room, nameP));
+                    if (parameterRoom.HasValue)
+                    {
+                        _Room temp_Room = new _Room(room);
+                        _rooms.Add(temp_Room);
+                    }
+                }
+
             }
+
         }
     }
     internal class _Room
     {
         internal Room room;
+        internal ElementId Id;
         internal string numberFlats;
+        internal double area;
+        internal double areaRoomLiving;
+        internal double areaRoomCommon;
+        internal double areaRoom;
         internal string typeRoom;
 
-        internal double areaRoom;
-        internal double coeffRoom;
 
-        internal Area areaFlatCommon;
-        internal Area areaFlatLiving;
-        internal Area areaFlat;
-        internal Area areaRoomCoefficient;
-        internal int countLivingRooms;
+        internal double areaRoomCoefficientSet;
 
-        internal _Room()
+
+        internal _Room(Room room)
         {
+            this.room = room;
             TakeNumberFlat();
-            TakeTypeRoom();
-            TakeCoeffRoom();
             TakeAreaRoom();
+            TakeIdRoom();
+            DependenceTypeRoom();
+            GetRoomTag(room);
         }
 
-        internal Definition GetDefinition(Element e, string parameter_name)
+
+
+
+        void DependenceTypeRoom()
         {
-            IList<Parameter> ps = e.GetParameters(parameter_name);
-
-            int n = ps.Count;
-
-            Debug.Assert(1 >= n,
-              "expected maximum one shared parameters "
-              + "named " + parameter_name);
-
-            Definition d = (0 == n)
-              ? null
-              : ps[0].Definition;
-            return d;
-        }
-
-        void TakeTypeRoom()
-        {
-
             string nameP = dfp.currentTypeRoom;
-            Parameter parameterRoom = room.get_Parameter(GetDefinition(room, nameP));
-            typeRoom = parameterRoom.AsString();
-
-        }
-        void TakeCoeffRoom()
-        {
-            switch (typeRoom)
+            string temptypeRoom;
+            Parameter parameterRoom = room.get_Parameter(Util.GetDefinition(room, nameP));
+            temptypeRoom = parameterRoom.AsValueString();
+            switch (temptypeRoom)
             {
-                case "5":
-                    coeffRoom = 0;
+                //...жилое
+                case "1":
+                    areaRoomCoefficientSet = 1;
+                    areaRoomLiving = area;
+                    areaRoomCommon = area * areaRoomCoefficientSet;
+                    areaRoom = area;
+                    typeRoom = "1";
                     break;
+                //...нежилое
+                case "2":
+                    areaRoomCoefficientSet = 1;
+                    areaRoomCommon = area * areaRoomCoefficientSet;
+                    areaRoom = area;
+                    typeRoom = "2";
+                    break;
+                //...лоджия
                 case "3":
-                    coeffRoom = 0.5;
+                    areaRoomCoefficientSet = 0.5;
+                    areaRoomCommon = area * areaRoomCoefficientSet;
+                    areaRoomLiving = 0;
+                    areaRoom = 0;
+                    typeRoom = "3";
                     break;
+                //...балкон
                 case "4":
-                    coeffRoom = 0.3;
+                    areaRoomCoefficientSet = 0.3;
+                    areaRoomLiving = 0;
+                    areaRoomCommon = area * areaRoomCoefficientSet;
+                    areaRoom = 0;
+                    typeRoom = "4";
                     break;
+                //...общее "5"
                 default:
-                    coeffRoom = 1;
+                    areaRoomCoefficientSet = 1;
+                    areaRoomLiving = 0;
+                    areaRoomCommon = 0;
+                    areaRoom = 0;
+                    typeRoom = "5";
                     break;
             }
+            nameP = dfp.currentAreaWithCoefficient;
+            Parameter Parameter = room.get_Parameter(Util.GetDefinition(room, nameP));
+            Parameter.SetValueString(areaRoomCoefficientSet.ToString());
 
         }
+
         void TakeNumberFlat()
         {
             string nameP = dfp.currentNumberFlat;
-            Parameter parameterRoom = room.get_Parameter(GetDefinition(room, nameP));
+            Parameter parameterRoom = room.get_Parameter(Util.GetDefinition(room, nameP));
             numberFlats = parameterRoom.AsString();
+        }
+        void TakeIdRoom()
+        {
+            Id = room.Id;
         }
         void TakeAreaRoom()
         {
-            //...площадь помещения
+            //...площадь помещения            
             string nameP = "Площадь";
-            Parameter parameterRoom = room.get_Parameter(GetDefinition(room, nameP));
-            areaRoom = parameterRoom.AsDouble();
+            Parameter parameterRoom = room.get_Parameter(Util.GetDefinition(room, nameP));
+            area = double.Parse(parameterRoom.AsValueString());
+        }
+
+
+        internal string ParametersOf_Room()
+        {
+            string tString = "";
+            tString = numberFlats + "-" + "\n";
+            tString = tString + typeRoom + "\n";
+            tString = tString + area.ToString() + "\n";
+            tString = tString + areaRoomCoefficientSet.ToString() + "\n";
+            return tString;
         }
 
     }
