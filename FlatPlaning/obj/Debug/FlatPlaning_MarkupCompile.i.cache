@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-32091274131
-1-1675349502
-15-1765174771
+4-1045794359
+11133109251
+17-1710520603
 191823005057
-AboutBox.xaml;FillingBox.xaml;AccordingBox.xaml;
+Dialogs\AboutBox.xaml;Dialogs\MarkingBox.xaml;Dialogs\FillingBox.xaml;Dialogs\AccordingBox.xaml;
 
-True
+False
 

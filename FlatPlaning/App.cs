@@ -26,6 +26,7 @@ namespace FlatPlaning
             //Util.GetLocalisationValues(app);
             string NameOfApp = "FlatPlaning";
             { // Лента
+
                 RibbonInitialize panel = new RibbonInitialize(app, NameOfApp);
                 // Выпадающее меню
                 string nameButtonPull = "FlatPlaning";
@@ -36,17 +37,32 @@ namespace FlatPlaning
                 // Комманда Заполнения параметров
                 string nameButtonFilling = "Filling";
                 PushButton buttonFilling = panel.pushButton(NameOfApp, group1, nameButtonFilling);
-                //---------
+                // Комманда Расстановки марок
+                string nameButtonMarking = "Marking";
+                PushButton buttonMarking = panel.pushButton(NameOfApp, group1, nameButtonMarking);                //---------
                 group1.AddSeparator();
                 // Комманда About
                 string nameButtonAbout = "About";
-                PushButton buttonAbout = panel.pushButton(NameOfApp, group1, nameButtonAbout);        
+                PushButton buttonAbout = panel.pushButton(NameOfApp, group1, nameButtonAbout);       
             }
             return Result.Succeeded;
         }
         public Result OnShutdown(UIControlledApplication a)
         {
             return Result.Succeeded;
+        }
+        static ImageSource GetEmbeddedImage1(string name)// Получение иконок из сборки
+        {
+            try
+            {
+                Assembly a = Assembly.GetExecutingAssembly();
+                Stream s = a.GetManifestResourceStream(name);
+                return BitmapFrame.Create(s);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
     internal class RibbonInitialize
@@ -78,7 +94,7 @@ namespace FlatPlaning
         internal PushButton pushButton(string nameOfApp, PulldownButton pull, string titleButton)
         {
             CountNameButton++;
-            string className = nameOfApp + "." + titleButton;
+            string className = nameOfApp + "."+ titleButton;
             string NameButton = "Name" + CountNameButton.ToString();
             PushButtonData buttonData = new PushButtonData(NameButton, titleButton, this.thisAssembyPath, className);
             PushButton pushButton = pull.AddPushButton(buttonData) as PushButton;
@@ -103,6 +119,7 @@ namespace FlatPlaning
 
 
     }
+    
 
 
 }

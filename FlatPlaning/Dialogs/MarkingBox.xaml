@@ -1,0 +1,28 @@
+﻿<Window x:Name="Marking" x:Class="FlatPlaning.MarkingBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:PropertyGrid="clr-namespace:UIFramework.PropertyGrid;assembly=UIFramework" 
+             xmlns:local="clr-namespace:FlatPlaning"
+             mc:Ignorable="d"
+             IsEnabled="True" Title="Marking" DataContext="{Binding}" ShowInTaskbar="False" 
+                    WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" MinWidth="500" MinHeight="200" MaxWidth="0" MaxHeight="950" Height="500" Width="494">
+    <Grid Margin="0" MinHeight="300" MaxHeight="500">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Ok_Button" Content="OK" Margin="25,0,197,15" VerticalAlignment="Bottom" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Click="Ok_Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Grid Margin="10,25,10,65">
+            <RadioButton Content="Все марки на текущем виде" Name="AllMarksOnView" IsChecked="True" Margin="20,0,0,25" VerticalAlignment="Bottom" Height="20"/>
+            <RadioButton Content="Выбраные марки" Name="SelectedMarks" Margin="20,0,0,0" VerticalAlignment="Bottom" Height="20" Checked="SelectedMarks_Checked"/>
+        </Grid>
+        <Button x:Name="Cancel_Button_Copy" Content="Cancel" Margin="195,0,27,15" VerticalAlignment="Bottom" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Click="Cancel_Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+   
+        <ListBox x:Name="RoomTagListBox" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Margin="10,10,10,125" Width="472">
+ 
+        </ListBox>
+        
+
+    </Grid>
+</Window>
