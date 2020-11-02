@@ -29,14 +29,26 @@ namespace FlatPlaning
         internal static bool SelectedRooms = false;
         internal static bool AllRoomsOnView = true;
         internal static bool AllRooms = false;
-        internal static IEnumerable<RoomTag> marks;
+        internal static List<RoomTag> marks;
+
+        internal static void ShowMarks()
+        {
+            int i = 0;
+            foreach (RoomTag roomTag in marks)
+            {
+
+                i++;
+            }
+
+            Autodesk.Revit.UI.TaskDialog.Show("MArks", i.ToString());
+        }
 
 
     }
 
     class Mark
     {
-        internal static  Document _doc;
+        internal static Document _doc;
         internal static UIDocument _UIDoc;
         internal RoomTag tag;
         internal static RoomTagType roomTagType;
@@ -70,14 +82,14 @@ namespace FlatPlaning
 
         private void GetRoomTags(List<Room> rooms)
         {
-            List<ElementId> eids=null;            
+            List<ElementId> eids = null;
             foreach (Room room in rooms)
             {
                 ElementId eid;
                 eid = room.Id;
                 eids.Add(eid);
             }
-            
+
             RoomTag RT = null;
             foreach (ElementId eid1 in eids)
             {

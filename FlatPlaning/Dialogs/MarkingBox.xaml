@@ -7,22 +7,12 @@
              xmlns:local="clr-namespace:FlatPlaning"
              mc:Ignorable="d"
              IsEnabled="True" Title="Marking" DataContext="{Binding}" ShowInTaskbar="False" 
-                    WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" MinWidth="500" MinHeight="200" MaxWidth="0" MaxHeight="950" Height="500" Width="494">
-    <Grid Margin="0" MinHeight="300" MaxHeight="500">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="Ok_Button" Content="OK" Margin="25,0,197,15" VerticalAlignment="Bottom" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Click="Ok_Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Grid Margin="10,25,10,65">
-            <RadioButton Content="Все марки на текущем виде" Name="AllMarksOnView" IsChecked="True" Margin="20,0,0,25" VerticalAlignment="Bottom" Height="20"/>
-            <RadioButton Content="Выбраные марки" Name="SelectedMarks" Margin="20,0,0,0" VerticalAlignment="Bottom" Height="20" Checked="SelectedMarks_Checked"/>
-        </Grid>
-        <Button x:Name="Cancel_Button_Copy" Content="Cancel" Margin="195,0,27,15" VerticalAlignment="Bottom" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Click="Cancel_Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-   
-        <ListBox x:Name="RoomTagListBox" ScrollViewer.HorizontalScrollBarVisibility="Hidden" Margin="10,10,10,125" Width="472">
- 
-        </ListBox>
-        
-
+                    WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" MinWidth="400" MinHeight="400" MaxWidth="800" MaxHeight="950" Height="500" Width="400">
+    <Grid Margin="10">
+        <ListBox x:Name="RoomTagListBox" Margin="0,0,0,141"/>
+        <Button x:Name="OkButton" Content="OK" HorizontalAlignment="Right" Margin="0,0,125,25" Width="80" Height="22" VerticalAlignment="Bottom" Click="OkButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Right" Margin="0,0,25,25" Width="80" Click="CancelButton_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Bottom"/>
+        <RadioButton x:Name="AllMarksOnView" Content="Все марки на текущем виде" HorizontalAlignment="Left" Margin="23,0,0,110" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom" IsChecked="True"/>
+        <RadioButton x:Name="SelectedMarks" Content="Выбраные марки" HorizontalAlignment="Left" Margin="23,0,0,75" VerticalAlignment="Bottom" VerticalContentAlignment="Bottom"/>
     </Grid>
 </Window>

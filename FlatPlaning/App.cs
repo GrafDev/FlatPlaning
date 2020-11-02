@@ -31,19 +31,21 @@ namespace FlatPlaning
                 // Выпадающее меню
                 string nameButtonPull = "FlatPlaning";
                 PulldownButton group1 = panel.pullDownButton(NameOfApp, nameButtonPull);
+                /*
                 // Комманда Соответсвия параметров
                 string nameButtonAccording = "According";
                 PushButton buttonAccording = panel.pushButton(NameOfApp, group1, nameButtonAccording);
-                // Комманда Заполнения параметров
-                string nameButtonFilling = "Filling";
-                PushButton buttonFilling = panel.pushButton(NameOfApp, group1, nameButtonFilling);
+                // Комманда Заполнения параметров*/
+                string nameButtonFilling = "Заполнение";
+                string nameClass = "Filling";
+                PushButton buttonFilling = panel.pushButton(NameOfApp, group1,nameClass, nameButtonFilling);
                 // Комманда Расстановки марок
-                string nameButtonMarking = "Marking";
+                /*string nameButtonMarking = "Marking";
                 PushButton buttonMarking = panel.pushButton(NameOfApp, group1, nameButtonMarking);                //---------
-                group1.AddSeparator();
+                group1.AddSeparator();*/
                 // Комманда About
                 string nameButtonAbout = "About";
-                PushButton buttonAbout = panel.pushButton(NameOfApp, group1, nameButtonAbout);       
+                PushButton buttonAbout = panel.pushButton(NameOfApp, group1,nameButtonAbout, nameButtonAbout);       
             }
             return Result.Succeeded;
         }
@@ -91,14 +93,14 @@ namespace FlatPlaning
             return group;
 
         }
-        internal PushButton pushButton(string nameOfApp, PulldownButton pull, string titleButton)
+        internal PushButton pushButton(string nameOfApp, PulldownButton pull, string titleButton,string nameClass)
         {
             CountNameButton++;
             string className = nameOfApp + "."+ titleButton;
             string NameButton = "Name" + CountNameButton.ToString();
-            PushButtonData buttonData = new PushButtonData(NameButton, titleButton, this.thisAssembyPath, className);
+            PushButtonData buttonData = new PushButtonData(NameButton, nameClass, this.thisAssembyPath, className);
             PushButton pushButton = pull.AddPushButton(buttonData) as PushButton;
-            string imageName = nameOfApp + "." + "Resources" + "." +titleButton + ".ico";
+            string imageName = nameOfApp + "." + "Resources" + "." +nameClass + ".ico";
             pushButton.Image = GetEmbeddedImage(imageName);
             pushButton.LargeImage = GetEmbeddedImage(imageName);
             return pushButton;

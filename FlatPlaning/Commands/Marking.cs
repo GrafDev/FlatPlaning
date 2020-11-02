@@ -36,6 +36,7 @@ namespace FlatPlaning
 
                     Document document = doc;
                     MarkingBox markingWindow = new MarkingBox(uidoc);
+
                     
                     //markingWindow.InitializeComponent();
                     //List<RoomTag> roomTags = new List<RoomTag>(SelectTags(uidoc,doc).ToList());

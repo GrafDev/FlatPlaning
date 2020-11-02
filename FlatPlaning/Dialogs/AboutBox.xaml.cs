@@ -43,5 +43,10 @@ namespace FlatPlaning
         {
             this.Close();
         }
+
+        private void AboutText_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -43,6 +43,7 @@ namespace FlatPlaning
             _doc = UIDoc.Document;
             Mark._doc = _doc;
             Mark._UIDoc = UIDoc;
+            _UIDoc = UIDoc;
             InitializeComponent();
 
             // Выбор типа Марки комнаты
@@ -63,26 +64,13 @@ namespace FlatPlaning
             this.ShowDialog();
         }
 
-        private void Ok_Button_Click(object sender, RoutedEventArgs e)
-        {
-
-            this.DialogResult = true;
-            this.Close();
-            Mark.roomTagType = RoomTagListBox.SelectedItem as RoomTagType;
-            Marks.marks= SelectTags().ToList();
-        }
-        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
 
         // выбор помещений
         private IEnumerable<RoomTag> SelectTags()
         {
             //Create a set of selected elements ids
             ICollection<ElementId> selectedObjectsIds = _UIDoc.Selection.GetElementIds();
-            //Create a set of rooms
+            //Create a set of roomTag
             IEnumerable<RoomTag> ModelTags = null;
             IList<RoomTag> tempList = new List<RoomTag>();
 
@@ -178,10 +166,25 @@ namespace FlatPlaning
                                 where type != null
                                 orderby type.Name
                                 select type;
+        }
+
+        private void OkButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            this.DialogResult = true;
+            this.Close();
+            Mark.roomTagType = RoomTagListBox.SelectedItem as RoomTagType;
+            Marks.marks = SelectTags().ToList();
+            Marks.ShowMarks();
 
 
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+            this.Close();
+        }
     }
 
 
