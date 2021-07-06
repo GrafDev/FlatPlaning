@@ -27,14 +27,15 @@ namespace FlatPlaning
     /// Interaction logic for UserControl1.xaml
     /// </summary>
 
-    public partial class AboutBox: Window
+    public partial class AccordingBox: Window
     {
         private Document _doc;
         private UIDocument _UIDoc;
-        public AboutBox(UIDocument UIDoc )
+        public AccordingBox(UIDocument UIDoc )
         {
             _doc = UIDoc.Document;
             _UIDoc = UIDoc;
+
             InitializeComponent();
             this.ShowDialog();
         }
@@ -42,11 +43,6 @@ namespace FlatPlaning
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void AboutText_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

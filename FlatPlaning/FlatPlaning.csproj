@@ -87,14 +87,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Flats.cs" />
+    <Compile Include="Commands\Marking.cs" />
     <Compile Include="Dialogs\AboutBox.xaml.cs">
       <DependentUpon>AboutBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\Mark.cs" />
     <Compile Include="Classes\Rooms.cs" />
+    <Compile Include="Dialogs\MarkingBox.xaml.cs">
+      <DependentUpon>MarkingBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\FillingBox.xaml.cs">
       <DependentUpon>FillingBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\AccordingBox.xaml.cs">
+      <DependentUpon>AccordingBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.cs" />
+    <Compile Include="Commands\According.cs" />
     <Compile Include="Commands\About.cs" />
     <Compile Include="Utils\dfp.cs" />
     <Compile Include="Utils\Util.cs" />
@@ -107,12 +116,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Dialogs\FlatPlaning_Flat.png" />
-    <Content Include="Dialogs\FlatPlaning_Propities.png" />
-    <EmbeddedResource Include="Resources\Flat.png" />
-    <EmbeddedResource Include="Resources\Propities.png" />
+    <EmbeddedResource Include="Resources\Marking.ico" />
     <Content Include="Supported\FlatPlaning.addin" />
     <EmbeddedResource Include="Resources\FlatPlaningGroup1.ico" />
+    <EmbeddedResource Include="Resources\According.ico" />
     <EmbeddedResource Include="Resources\Filling.ico" />
     <EmbeddedResource Include="Resources\About.ico" />
     <EmbeddedResource Include="Resources\FlatPlaning.ico" />
@@ -131,7 +138,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Dialogs\MarkingBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\FillingBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AccordingBox.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -139,8 +154,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>if exist "$(AppData)\Autodesk\REVIT\Addins\2020" copy "$(ProjectDir)\Supported\*.addin" "$(AppData)\Autodesk\REVIT\Addins\2020"
+if exist "$(AppData)\Autodesk\REVIT\Addins\2020" copy "$(ProjectDir)$(OutputPath)*.dll" "$(AppData)\Autodesk\REVIT\Addins\2020"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
