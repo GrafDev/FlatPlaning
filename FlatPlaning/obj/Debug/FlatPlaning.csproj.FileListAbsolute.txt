@@ -48,3 +48,22 @@ C:\Users\user\Documents\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csp
 C:\Users\user\Documents\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.CoreCompileInputs.cache
 C:\Users\user\Documents\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.dll
 C:\Users\user\Documents\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.pdb
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\bin\Debug\FlatPlaning.dll
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\bin\Debug\FlatPlaning.pdb
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.AssemblyReference.cache
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\Dialogs\AboutBox.g.cs
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\Dialogs\MarkingBox.g.cs
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\Dialogs\FillingBox.g.cs
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\Dialogs\AccordingBox.g.cs
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.cache
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning_MarkupCompile.lref
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\Dialogs\AboutBox.baml
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\Dialogs\MarkingBox.baml
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\Dialogs\FillingBox.baml
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\Dialogs\AccordingBox.baml
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.g.resources
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.Properties.Resources.resources
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.GenerateResource.cache
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.CoreCompileInputs.cache
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.dll
+D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.pdb
