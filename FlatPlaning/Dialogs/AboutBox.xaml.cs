@@ -21,6 +21,7 @@ using System.Resources;
 using System.Reflection.Emit;
 using System.Reflection;
 
+
 namespace FlatPlaning
 {
     /// <summary>
@@ -37,6 +38,7 @@ namespace FlatPlaning
             _UIDoc = UIDoc;
             InitializeComponent();
             this.ShowDialog();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -48,5 +50,14 @@ namespace FlatPlaning
         {
 
         }
+        private void FillImages()
+        {
+
+            BitmapImage imageFlat = new BitmapImage();
+            BitmapImage imageProp = new BitmapImage();
+
+
+        }
+
     }
 }
