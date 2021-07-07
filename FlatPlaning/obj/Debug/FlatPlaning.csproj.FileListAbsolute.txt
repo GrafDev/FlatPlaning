@@ -67,3 +67,4 @@ D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\
 D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.CoreCompileInputs.cache
 D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.dll
 D:\YandexDisk\99 PC-HOME\Документы Graf\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.pdb
+C:\Users\user\Documents\GitHub\FlatPlaning\FlatPlaning\obj\Debug\FlatPlaning.csproj.AssemblyReference.cache
