@@ -4,17 +4,17 @@
 library
 C#
 .cs
-C:\Users\jakovlevgm\source\repos\FlatPlaning\FlatPlaning\obj\Release\
+C:\Users\user\Documents\GitHub\FlatPlaning\FlatPlaning\obj\Release\
 FlatPlaning
 none
 false
 TRACE
 
-32091274131
-1-1675349502
-14-922815404
-191823005057
-AboutBox.xaml;FillingBox.xaml;AccordingBox.xaml;
+4-1045794359
+2-9751630
+16-868161236
+19-1228974031
+Dialogs\AboutBox.xaml;Dialogs\MarkingBox.xaml;Dialogs\FillingBox.xaml;Dialogs\AccordingBox.xaml;
 
 True
 
