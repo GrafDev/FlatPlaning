@@ -24,28 +24,27 @@ namespace FlatPlaning
         {
             UIControlledApplication app = application;
             //Util.GetLocalisationValues(app);
-            string NameOfApp = "FlatPlaning";
-            { // Лента
 
-                RibbonInitialize panel = new RibbonInitialize(app, NameOfApp);
-                // Выпадающее меню
-                string nameButtonPull = "FlatPlaning";
-                PulldownButton group1 = panel.pullDownButton(NameOfApp, nameButtonPull);
-                /*
-                // Комманда Соответсвия параметров
-                string nameButtonAccording = "According";
-                PushButton buttonAccording = panel.pushButton(NameOfApp, group1, nameButtonAccording);
-                // Комманда Заполнения параметров*/
+            string nameOfApp = "FlatPlaning";
+            string nameOfTab = "GrafDev";
+            string nameButtonPull = "FlatPlaning";
+            {
+                try
+                {
+                    app.CreateRibbonTab(nameOfTab);
+                }
+                catch
+                {
+
+                }
+                var panel = new RibbonInitialize(app,nameOfTab,nameOfApp);
+                
+                var group1 = panel.pullDownButton(nameOfApp, nameButtonPull);
                 string nameButtonFilling = "Заполнение";
                 string nameClass = "Filling";
-                PushButton buttonFilling = panel.pushButton(NameOfApp, group1,nameClass, nameButtonFilling);
-                // Комманда Расстановки марок
-                /*string nameButtonMarking = "Marking";
-                PushButton buttonMarking = panel.pushButton(NameOfApp, group1, nameButtonMarking);                //---------
-                group1.AddSeparator();*/
-                // Комманда About
+                var buttonFilling = panel.pushButton(nameOfApp, group1,nameClass, nameButtonFilling);
                 string nameButtonAbout = "About";
-                PushButton buttonAbout = panel.pushButton(NameOfApp, group1,nameButtonAbout, nameButtonAbout);       
+                var buttonAbout = panel.pushButton(nameOfApp, group1,nameButtonAbout, nameButtonAbout);       
             }
             return Result.Succeeded;
         }
@@ -72,12 +71,12 @@ namespace FlatPlaning
         int CountNameButton = 0;
         Autodesk.Revit.UI.RibbonPanel ribbonPanel;
         string thisAssembyPath;
-        internal RibbonInitialize(UIControlledApplication app, string panelName)
+        internal RibbonInitialize(UIControlledApplication app,string nameTab, string panelName)
         {
 
             thisAssembyPath = Assembly.GetExecutingAssembly().Location;
             // Инициализация панели
-            ribbonPanel = app.CreateRibbonPanel(panelName);
+            ribbonPanel = app.CreateRibbonPanel(nameTab, panelName);
             ribbonPanel.Enabled = true;
             ribbonPanel.Visible = true;
         }

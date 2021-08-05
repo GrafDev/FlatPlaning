@@ -7,14 +7,15 @@
              xmlns:local="clr-namespace:FlatPlaning"
              mc:Ignorable="d"
              IsEnabled="True" Title="About" DataContext="{Binding}" ShowInTaskbar="False" 
-                    WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Width="300" Height="300" MinWidth="300" MinHeight="300" MaxWidth="900" MaxHeight="900" ResizeMode="NoResize">
+                    WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Width="400" Height="400" ResizeMode="NoResize">
     <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="Ok_Button" Content="Ok" HorizontalAlignment="Center" Margin="0,0,0,50" VerticalAlignment="Bottom" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Click="Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <TextBox x:Name="AboutText" Margin="0,0,0,0" TextWrapping="Wrap" TextChanged="AboutText_TextChanged" Text=" gregory.yakovlev@gmail.com" HorizontalAlignment="Left" Width="274" Height="20" VerticalAlignment="Bottom" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
-        <TextBox Margin="10,10,10,90" TextWrapping="Wrap"  HorizontalAlignment="Left" Width="274" Height="172" VerticalAlignment="Bottom" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
-                 Text=" Плагин вычисляет общую площадь квартиры, количество жилых комнат, общую жилую площадь. И записывает результат вычисленйи в соотвествующие параметра. Марка квартиры уже забирает значения оттуда. Расчет значений производиться на основе типа помещений, номера квартиры, площади помещений и коэффициента площади помещений (балкон или лоджия)." Cursor="None" IsEnabled="False" Focusable="False" IsTabStop="False" IsReadOnly="True"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="120"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="Ok_Button" Grid.Row="1" Content="Ok" HorizontalAlignment="Center" Margin="0,0,0,50" VerticalAlignment="Bottom" Width="120" Height="30" Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}" BorderBrush="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" Click="Button_Click" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="AboutText" Grid.Row="1" Margin="0,0,0,0" TextWrapping="Wrap" TextChanged="AboutText_TextChanged" Text=" gregory.yakovlev@gmail.com" HorizontalAlignment="Left" Width="274" Height="20" VerticalAlignment="Bottom" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"/>
+        <TextBox Margin="10,10,10,10" Grid.Row="0" TextWrapping="Wrap"  HorizontalAlignment="Left"  VerticalAlignment="Top" VerticalContentAlignment="Top" Background="{DynamicResource {x:Static SystemColors.ActiveBorderBrushKey}}"
+                 Text=" Плагин вычисляет общую площадь квартиры, количество жилых комнат, общую жилую площадь. И записывает результат вычисленйи в соотвествующие параметра. Марка квартиры уже забирает значения оттуда. Расчет значений производиться на основе типа помещений, номера квартиры, площади помещений и коэффициента площади помещений (балкон или лоджия)." Cursor="None" IsEnabled="False" Focusable="False" IsTabStop="False" IsReadOnly="True" />
     </Grid>
 </Window>
